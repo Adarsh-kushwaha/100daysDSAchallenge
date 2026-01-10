@@ -1,18 +1,25 @@
 var groupAnagrams = function (strs) {
     const map = new Map();
 
-    for (let word of strs) {
+    for(let word of strs){
         const count = Array(26).fill(0);
 
-        for (let char of word) {
+        for(let char of word){
             count[char.charCodeAt(0) - 97]++;
         }
 
-        const key = count.join("#");
+        const key = count.join("*");
 
-        if (!map.has(key)) map.set(key, []);
+        if(!map.has(key)){
+            map.set(key, []);
+        }
+
         map.get(key).push(word);
     }
 
-    return [...map.values()];
+    console.log([...map.values()])
 };
+
+const strs = ["eat","tea","tan","ate","nat","bat"]
+
+groupAnagrams(strs)
